@@ -16,7 +16,7 @@ def view_full_details_of_a_specific_room():
     for room in all_rooms:
         if room.get('name').lower() == name:
             return room
-    return None
+    print("The room not exist")
 
 
 
@@ -31,22 +31,38 @@ def add_a_new_room():
 
 
 
-# def update_details_of_an_existing_room():
-#     choose = str_to_int(update_rooms_menu())
-#     if choose == 1:
-#         name = get_name("enter new name: ")
-#     if choose ==2:
-#         pass
-#     if choose ==3:
-#         pass
-#     if choose ==4:
-#         pass
-#     if choose ==5:
-#         pass
-#     if choose ==6:
-#         pass
-#     if choose ==7:
-#         pass
+def update_details_of_an_existing_room():
+    room_num = get_num("enter room ID number", 1000)
+    target_id = search_room_by_id(room_num)
+    all_rooms = load_rooms()
+    for room in all_rooms:
+        if room["room_id"] == target_id:
+            choose = str_to_int(update_rooms_menu())
+            if choose == 1:
+                room["name"] = get_name("enter new name")
+            elif choose == 2:
+                room["difficulty"] = get_difficult()
+            elif choose == 3:
+                room["duration"] = get_num("enter new duration", 100)
+            elif choose == 4:
+                room["min_players"] = get_num("enter new min players", room["max_players"])
+            elif choose == 5:
+                room["max_players"] = get_num("enter new max players", 20)
+                if room["max_players"] < room["min_players"]:
+                    break
+            elif choose == 6:
+                room["price_per_player"] = get_num("enter new price", 200)
+            elif choose == 7:
+                pass
+            else:
+                print("Invalid option")
+                return
+
+            dump_rooms(all_rooms)
+            print("Room updated successfully!")
+            return
+
+    print("Room not found.")
 
 
 

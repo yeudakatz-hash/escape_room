@@ -130,5 +130,16 @@
     "total_price": 972.0,
     "status": "Active",
     "cancellation_fee": 0.0
+  },
+  {
+    "booking_id": "B013",
+    "customer_name": "shimon",
+    "room_id": "R005",
+    "booking_date": null,
+    "start_time": null,
+    "players": 5,
+    "total_price": 90.0,
+    "status": "Active",
+    "cancellation_fee": 0.0
   }
 ]

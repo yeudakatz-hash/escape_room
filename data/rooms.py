@@ -26,6 +26,18 @@ def get_len_rooms():
     return f"R{len_rooms:03d}"
 
 
+
+def search_room_by_id(num):
+    new_num = str(num)
+    if num < 10:
+        return "R00" + new_num
+    elif num < 100:
+        return "R0" + new_num
+    elif num < 1000:
+        return "R" + new_num
+
+
+
 def add_room_to_list(name, difficult, duration, max_player, min_player, price_per_person):
     all_rooms = load_rooms()
     new_room = {
